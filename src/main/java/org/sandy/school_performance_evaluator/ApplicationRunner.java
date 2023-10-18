@@ -12,7 +12,6 @@ public class ApplicationRunner {
         System.out.println(MessageFormat.format("Class average grades: ",courseGradeAverageCalculatorService.calculateCourseAverage()));
 
         StatisticsCalculatorService statisticsCalculatorService = new StatisticsCalculatorServiceImpl(new GradeSubjectsRepositoryImpl(new StudentsCharacterizationRepositoryImpl()));
-        //System.out.println(MessageFormat.format("Class average grades: ",statisticsCalculatorService.calculateGradeMode()));
-
+        System.out.println(MessageFormat.format("Median by subject: ",statisticsCalculatorService.calculateMedianGradeBySubject(new GradeSubjectsRepositoryImpl(new StudentsCharacterizationRepositoryImpl()))));
     }
 }
