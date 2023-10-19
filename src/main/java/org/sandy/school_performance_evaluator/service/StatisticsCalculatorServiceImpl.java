@@ -4,11 +4,13 @@ import org.sandy.school_performance_evaluator.repository.GradeSubjectsRepository
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class StatisticsCalculatorServiceImpl implements StatisticsCalculatorService{
+    DecimalFormat decimalFormat = new DecimalFormat("#.#");
     private static final Logger logger = LoggerFactory.getLogger(StatisticsCalculatorServiceImpl.class);
     private GradeSubjectsRepositoryImpl gradeSubjectsRepository = null;
     public StatisticsCalculatorServiceImpl(GradeSubjectsRepositoryImpl gradeSubjectsRepository){
@@ -22,7 +24,7 @@ public class StatisticsCalculatorServiceImpl implements StatisticsCalculatorServ
         List<Double> medianGradesBySubject = new ArrayList<>();
 
         for (List<Double> subjectGrades : allSubjectsGrades) {
-            double median = calculateMedian(subjectGrades);
+            double median = Double.valueOf(decimalFormat.format(calculateMedian(subjectGrades)).replace(',', '.'));
             medianGradesBySubject.add(median);
         }
 

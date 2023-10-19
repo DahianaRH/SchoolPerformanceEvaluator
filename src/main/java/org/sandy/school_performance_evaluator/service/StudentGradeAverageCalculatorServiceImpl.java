@@ -5,9 +5,12 @@ import org.sandy.school_performance_evaluator.repository.StudentsCharacterizatio
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.DecimalFormat;
+
 public class StudentGradeAverageCalculatorServiceImpl implements StudentGradeAverageCalculatorService {
     //StudentGradeAverageCalculatorServiceImpl --> (leer datos) --> interface StudentsCharacterizationRepository
 
+    DecimalFormat decimalFormat = new DecimalFormat("#.#");
     private static final Logger logger = LoggerFactory.getLogger(StudentGradeAverageCalculatorServiceImpl.class);
 
     private final StudentsCharacterizationRepository studentsCharacterizationRepository;
@@ -19,7 +22,8 @@ public class StudentGradeAverageCalculatorServiceImpl implements StudentGradeAve
                 (student.physicsGrade() * 2) + (student.chemistryGrade() * 2) + (student.citizenEducationGrade() * 1) +
                 (student.philosophyGrade() * 1) + (student.sportsGrade() * 1);
 
-        return (float) (sumatoria) / 13F;
+        double average = Double.valueOf(decimalFormat.format((float) (sumatoria) / 13F).replace(',', '.'));
+        return average;
     }
 
 }
