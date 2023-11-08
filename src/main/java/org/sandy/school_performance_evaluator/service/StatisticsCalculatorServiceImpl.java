@@ -1,6 +1,6 @@
 package org.sandy.school_performance_evaluator.service;
 
-import org.sandy.school_performance_evaluator.repository.GradeBySubjectInMemoryRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.GradeBySubjectRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,13 +12,13 @@ import java.util.List;
 public class StatisticsCalculatorServiceImpl implements StatisticsCalculatorService{
     DecimalFormat decimalFormat = new DecimalFormat("#.#");
     private static final Logger logger = LoggerFactory.getLogger(StatisticsCalculatorServiceImpl.class);
-    private GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepository = null;
-    public StatisticsCalculatorServiceImpl(GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepository){
+    private GradeBySubjectRepositoryImpl gradeSubjectsRepository = null;
+    public StatisticsCalculatorServiceImpl(GradeBySubjectRepositoryImpl gradeSubjectsRepository){
         this.gradeSubjectsRepository = gradeSubjectsRepository;
     }
 
     @Override
-    public List<Double> calculateMedianGradeBySubject(GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepository) {
+    public List<Double> calculateMedianGradeBySubject(GradeBySubjectRepositoryImpl gradeSubjectsRepository) {
         List<List<Double>> allSubjectsGrades = gradeSubjectsRepository.findAllGradeBySubjects();
 
         List<Double> medianGradesBySubject = new ArrayList<>();

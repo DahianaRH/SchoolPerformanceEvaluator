@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class GradeBySubjectInMemoryRepositoryImpl implements GradeBySubjectRepository {
+public class GradeBySubjectRepositoryImpl implements GradeBySubjectRepository {
     private StudentsCharacterizationRepository studentsCharacterizationRepository = null;
-    public GradeBySubjectInMemoryRepositoryImpl(StudentsCharacterizationRepository studentsCharacterizationRepository){
+    public GradeBySubjectRepositoryImpl(StudentsCharacterizationRepository studentsCharacterizationRepository){
         this.studentsCharacterizationRepository = studentsCharacterizationRepository;
     }
 

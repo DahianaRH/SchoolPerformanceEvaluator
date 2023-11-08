@@ -1,14 +1,14 @@
 package org.sandy.school_performance_evaluator;
 
 import org.sandy.school_performance_evaluator.model.StudentCharacterization;
-import org.sandy.school_performance_evaluator.repository.GradeBySubjectInMemoryRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.GradeBySubjectRepositoryImpl;
 import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationUsingFileRepositoryImpl;
 import org.sandy.school_performance_evaluator.service.*;
 
 public class ApplicationRunner {
     public static void main(String[] args) {
         StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationUsingFileRepository =  new StudentsCharacterizationUsingFileRepositoryImpl();
-        GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepositoryImp = new GradeBySubjectInMemoryRepositoryImpl(studentsCharacterizationUsingFileRepository);
+        GradeBySubjectRepositoryImpl gradeSubjectsRepositoryImp = new GradeBySubjectRepositoryImpl(studentsCharacterizationUsingFileRepository);
         StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorServiceImpl = new StudentGradeAverageCalculatorServiceImpl(studentsCharacterizationUsingFileRepository);
         CourseGradeAverageCalculatorService courseGradeAverageCalculatorService = new CourseGradeAverageCalculatorServiceImpl(studentGradeAverageCalculatorServiceImpl, gradeSubjectsRepositoryImp, studentsCharacterizationUsingFileRepository);
         StatisticsCalculatorService statisticsCalculatorService = new StatisticsCalculatorServiceImpl(gradeSubjectsRepositoryImp);

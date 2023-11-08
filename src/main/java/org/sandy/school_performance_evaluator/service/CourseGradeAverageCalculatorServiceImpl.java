@@ -1,7 +1,7 @@
 package org.sandy.school_performance_evaluator.service;
 
 import org.sandy.school_performance_evaluator.model.StudentCharacterization;
-import org.sandy.school_performance_evaluator.repository.GradeBySubjectInMemoryRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.GradeBySubjectRepositoryImpl;
 import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationUsingFileRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,11 +13,11 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     private static final Logger logger = LoggerFactory.getLogger(CourseGradeAverageCalculatorServiceImpl.class);
     DecimalFormat decimalFormat = new DecimalFormat("#.#");
     private StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService = null;
-    private GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepository = null;
+    private GradeBySubjectRepositoryImpl gradeSubjectsRepository = null;
     private StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository = null;
     public CourseGradeAverageCalculatorServiceImpl(
             StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService,
-            GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepository,
+            GradeBySubjectRepositoryImpl gradeSubjectsRepository,
             StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository)
     {
         this.studentGradeAverageCalculatorService = studentGradeAverageCalculatorService;
