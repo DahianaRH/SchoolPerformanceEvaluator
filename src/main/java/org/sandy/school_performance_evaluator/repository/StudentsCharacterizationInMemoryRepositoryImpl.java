@@ -4,14 +4,11 @@ import org.sandy.school_performance_evaluator.model.StudentCharacterization;
 
 import java.util.List;
 
-public class StudentsCharacterizationRepositoryImpl implements StudentsCharacterizationRepository{
-
-
-    @Override
+public class StudentsCharacterizationInMemoryRepositoryImpl {
+    //@Override
     public List<StudentCharacterization> findAllStudentsCharacterization() {
 
         List<StudentCharacterization> StudentsDataList = List.of(
-
         new StudentCharacterization("1007654522", "Isabella Acosta", 3.5,4.2,3.8,
                         3.9,4.0, 4.5, 3.7, 4.1),
         new StudentCharacterization("1008166443", "Juan David Alcaraz", 4.0,3.5,3.2,
@@ -113,7 +110,6 @@ public class StudentsCharacterizationRepositoryImpl implements StudentsCharacter
         new StudentCharacterization("1609876543", "Gabriel Vasquez", 4.3,4.5,4.2,
                 4.4,3.1, 3.0, 3.3, 3.5)
         );
-
         return StudentsDataList;
     }
 }

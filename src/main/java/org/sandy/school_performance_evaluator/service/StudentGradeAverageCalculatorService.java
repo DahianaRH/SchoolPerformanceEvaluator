@@ -6,6 +6,4 @@ import java.util.List;
 
 public interface StudentGradeAverageCalculatorService {
     double calculateAverage(StudentCharacterization student);
-
-    //List<Double> calculateSubjectAverages(StudentCharacterization student);
 }

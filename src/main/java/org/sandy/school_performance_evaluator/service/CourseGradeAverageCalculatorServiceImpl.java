@@ -1,8 +1,8 @@
 package org.sandy.school_performance_evaluator.service;
 
 import org.sandy.school_performance_evaluator.model.StudentCharacterization;
-import org.sandy.school_performance_evaluator.repository.GradeSubjectsRepositoryImpl;
-import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.GradeBySubjectInMemoryRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationUsingFileRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.text.DecimalFormat;
@@ -13,12 +13,12 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     private static final Logger logger = LoggerFactory.getLogger(CourseGradeAverageCalculatorServiceImpl.class);
     DecimalFormat decimalFormat = new DecimalFormat("#.#");
     private StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService = null;
-    private GradeSubjectsRepositoryImpl gradeSubjectsRepository = null;
-    private StudentsCharacterizationRepositoryImpl studentsCharacterizationRepository = null;
+    private GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepository = null;
+    private StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository = null;
     public CourseGradeAverageCalculatorServiceImpl(
             StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService,
-            GradeSubjectsRepositoryImpl gradeSubjectsRepository,
-            StudentsCharacterizationRepositoryImpl studentsCharacterizationRepository)
+            GradeBySubjectInMemoryRepositoryImpl gradeSubjectsRepository,
+            StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository)
     {
         this.studentGradeAverageCalculatorService = studentGradeAverageCalculatorService;
         this.gradeSubjectsRepository = gradeSubjectsRepository;
@@ -39,7 +39,7 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public List<String> classifyStudentsWhoPassed(StudentsCharacterizationRepositoryImpl studentsCharacterizationRepository) {
+    public List<String> classifyStudentsWhoPassed(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
         String average;
         List<String> studentsWhoPassed = new ArrayList<>();
         double averageNum;
@@ -58,7 +58,7 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public List<String> classifyStudentsWhoFailed(StudentsCharacterizationRepositoryImpl studentsCharacterizationRepository) {
+    public List<String> classifyStudentsWhoFailed(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
         String average;
         List<String> studentsWhoFailed = new ArrayList<>();
         double averageNum;
@@ -77,7 +77,7 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public String findSubjectWithHighestGrade(StudentsCharacterizationRepositoryImpl studentsCharacterizationRepository) {
+    public String findSubjectWithHighestGrade(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
         double highestGrade = 0.0;
         String subjectName = "";
         String studentName = "";
@@ -135,7 +135,7 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public String findStudentWithHighestAverage(StudentsCharacterizationRepositoryImpl studentsCharacterizationRepository) {
+    public String findStudentWithHighestAverage(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
         double average;
         double highestAverage = 0.0;
         String studentWithHighestAverage = "";
@@ -152,7 +152,7 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public String findStudentWithLowestAverage(StudentsCharacterizationRepositoryImpl studentsCharacterizationRepository) {
+    public String findStudentWithLowestAverage(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
         double average;
         double lowestAverage = 5.0;
         String studentWithLowestAverage = "";
