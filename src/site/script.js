@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
                            .then(data => {
                                const highestAverageStudent = document.getElementById("highestAverageStudent");
                                if (highestAverageStudent) {
-                                   highestAverageStudent.textContent = `El mejor promedio es ${data}`;
+                                   highestAverageStudent.textContent = `El estudiante con mejor promedio es ${data}`;
                                    showOverlay();
                                    } else {
                                         console.error('Elemento con ID "highestAverageStudent" no encontrado.');
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
                            .then(data => {
                                const lowestAverageStudent = document.getElementById("lowestAverageStudent");
                                if (lowestAverageStudent) {
-                                   lowestAverageStudent.textContent = `El promedio más bajo es ${data}`;
+                                   lowestAverageStudent.textContent = `El estudiante con promedio más bajo es ${data}`;
                                    showOverlay();
                                    } else {
                                         console.error('Elemento con ID "lowestAverageStudent" no encontrado.');

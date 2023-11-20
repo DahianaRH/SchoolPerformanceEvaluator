@@ -22,27 +22,22 @@ public class StatisticsCalculatorServiceImpl implements StatisticsCalculatorServ
     @Override
     public double calculateMedianGradeBySubject(String subjectName) {
         List<List<Double>> allSubjectsGrades = gradeSubjectsRepository.findAllGradeBySubjects();
-        // Obtener la posición de la materia en la secuencia
         int subjectIndex = getSubjectIndex(subjectName);
 
-        // Verificar si el índice es válido
         if (subjectIndex < 0 || subjectIndex >= allSubjectsGrades.get(0).size()) {
             throw new IllegalArgumentException("Nombre de materia no válido: " + subjectName);
         }
 
         List<Double> subjectGrades = new java.util.ArrayList<>();
 
-        // Iterar sobre las filas (estudiantes) y obtener las calificaciones de la materia específica
         for (List<Double> studentGrades : allSubjectsGrades) {
             subjectGrades.add(studentGrades.get(subjectIndex));
         }
 
-        // Calcular la mediana y retornar el resultado
         return calculateMedian(subjectGrades);
     }
 
     private int getSubjectIndex(String subjectName) {
-        // Asignar un índice a cada materia según la secuencia dada
         switch (subjectName.toLowerCase()) {
             case "calculus":
                 return 0;
@@ -61,7 +56,7 @@ public class StatisticsCalculatorServiceImpl implements StatisticsCalculatorServ
             case "sports":
                 return 7;
             default:
-                return -1; // Retorna -1 si el nombre de la materia no es válido
+                return -1;
         }
     }
 
@@ -69,16 +64,13 @@ public class StatisticsCalculatorServiceImpl implements StatisticsCalculatorServ
     public List<Double> calculateMedianGradesForAllSubjects() {
         List<List<Double>> allSubjectsGrades = gradeSubjectsRepository.findAllGradeBySubjects();
         List<Double> medianGrades = new ArrayList<>();
-        // Itera sobre las columnas (materias)
         for (int i = 0; i < allSubjectsGrades.get(0).size(); i++) {
             List<Double> subjectGrades = new ArrayList<>();
 
-            // Itera sobre las filas (estudiantes)
             for (List<Double> studentGrades : allSubjectsGrades) {
                 subjectGrades.add(studentGrades.get(i));
             }
 
-            // Calcula la mediana y agrega al resultado
             double median = calculateMedian(subjectGrades);
             median = Double.valueOf(String.format("%.1f", median).replace(',', '.')); // Redondea a 1 decimal
             medianGrades.add(median);
@@ -101,6 +93,4 @@ public class StatisticsCalculatorServiceImpl implements StatisticsCalculatorServ
             return grades.get(medio);
         }
     }
-
-
 }

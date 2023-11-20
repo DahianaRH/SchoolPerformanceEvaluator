@@ -22,7 +22,7 @@ public class StudentCharacterizationController {
     @Autowired
     public StudentCharacterizationController(
             CourseGradeAverageCalculatorService courseGradeAverageCalculatorService,
-            StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService, StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
+            StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService) {
         this.courseGradeAverageCalculatorService = courseGradeAverageCalculatorService;
         this.studentGradeAverageCalculatorService = studentGradeAverageCalculatorService;
     }
