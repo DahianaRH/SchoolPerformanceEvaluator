@@ -39,7 +39,6 @@ public class StudentCharacterizationController {
 
     @PostMapping("/createStudent")
     public ResponseEntity<StudentCharacterization> createStudent(@RequestBody StudentCharacterization newStudentCharacterization) {
-        System.out.println("Datos del estudiante recibidos: " + newStudentCharacterization);
         StudentCharacterization studentCharacterization = studentGradeAverageCalculatorService.addStudentCharacterization(newStudentCharacterization);
         return ResponseEntity.status(HttpStatus.OK).body(studentCharacterization);
     }
