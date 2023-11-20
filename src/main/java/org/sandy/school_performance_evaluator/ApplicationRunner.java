@@ -1,14 +1,14 @@
 package org.sandy.school_performance_evaluator;
 
 import org.sandy.school_performance_evaluator.model.StudentCharacterization;
-import org.sandy.school_performance_evaluator.repository.GradeBySubjectRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.GradeSubjectRepositoryImpl;
 import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationUsingFileRepositoryImpl;
 import org.sandy.school_performance_evaluator.service.*;
 
 public class ApplicationRunner {
     public static void main(String[] args) {
-        StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationUsingFileRepository =  new StudentsCharacterizationUsingFileRepositoryImpl();
-        GradeBySubjectRepositoryImpl gradeSubjectsRepositoryImp = new GradeBySubjectRepositoryImpl(studentsCharacterizationUsingFileRepository);
+       /* StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationUsingFileRepository =  new StudentsCharacterizationUsingFileRepositoryImpl();
+        GradeSubjectRepositoryImpl gradeSubjectsRepositoryImp = new GradeSubjectRepositoryImpl(studentsCharacterizationUsingFileRepository);
         StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorServiceImpl = new StudentGradeAverageCalculatorServiceImpl(studentsCharacterizationUsingFileRepository);
         CourseGradeAverageCalculatorService courseGradeAverageCalculatorService = new CourseGradeAverageCalculatorServiceImpl(studentGradeAverageCalculatorServiceImpl, gradeSubjectsRepositoryImp, studentsCharacterizationUsingFileRepository);
         StatisticsCalculatorService statisticsCalculatorService = new StatisticsCalculatorServiceImpl(gradeSubjectsRepositoryImp);
@@ -32,5 +32,5 @@ public class ApplicationRunner {
 
         System.out.println("--------New student added to List--------");
         System.out.println(studentsCharacterizationUsingFileRepository.getStudentCharacterization("1028032866"));
-    }
+   */ }
     }

@@ -1,23 +1,26 @@
 package org.sandy.school_performance_evaluator.service;
 
 import org.sandy.school_performance_evaluator.model.StudentCharacterization;
-import org.sandy.school_performance_evaluator.repository.GradeBySubjectRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.GradeSubjectRepositoryImpl;
 import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationUsingFileRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAverageCalculatorService{
     private static final Logger logger = LoggerFactory.getLogger(CourseGradeAverageCalculatorServiceImpl.class);
     DecimalFormat decimalFormat = new DecimalFormat("#.#");
     private StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService = null;
-    private GradeBySubjectRepositoryImpl gradeSubjectsRepository = null;
+    private GradeSubjectRepositoryImpl gradeSubjectsRepository = null;
     private StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository = null;
     public CourseGradeAverageCalculatorServiceImpl(
             StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService,
-            GradeBySubjectRepositoryImpl gradeSubjectsRepository,
+            GradeSubjectRepositoryImpl gradeSubjectsRepository,
             StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository)
     {
         this.studentGradeAverageCalculatorService = studentGradeAverageCalculatorService;
@@ -26,11 +29,13 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
     @Override
     public double calculateCourseAverage() {
+        List<StudentCharacterization> studentCharacterizationList = this.studentsCharacterizationRepository.findAllStudentsCharacterization();
+
         int studentsNumber = 0;
         double summationGrades = 0.0;
         double courseAverage = 0.0;
 
-        for (StudentCharacterization studentCharacterization: studentsCharacterizationRepository.findAllStudentsCharacterization()) {
+        for (StudentCharacterization studentCharacterization: studentCharacterizationList) {
             studentsNumber++;
             summationGrades += studentGradeAverageCalculatorService.calculateAverage(studentCharacterization);
         }
@@ -39,12 +44,14 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public List<String> classifyStudentsWhoPassed(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
+    public List<String> classifyStudentsWhoPassed() {
+        List<StudentCharacterization> studentCharacterizationList = this.studentsCharacterizationRepository.findAllStudentsCharacterization();
+
         String average;
         List<String> studentsWhoPassed = new ArrayList<>();
         double averageNum;
         int index = 0;
-        for (StudentCharacterization studentCharacterization : studentsCharacterizationRepository.findAllStudentsCharacterization()) {
+        for (StudentCharacterization studentCharacterization : studentCharacterizationList) {
             average = decimalFormat.format(studentGradeAverageCalculatorService.calculateAverage(studentCharacterization)).replace(',', '.');
             averageNum = Double.valueOf(average);
             String studentInfo = null;
@@ -58,12 +65,14 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public List<String> classifyStudentsWhoFailed(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
+    public List<String> classifyStudentsWhoFailed() {
+        List<StudentCharacterization> studentCharacterizationList = this.studentsCharacterizationRepository.findAllStudentsCharacterization();
+
         String average;
         List<String> studentsWhoFailed = new ArrayList<>();
         double averageNum;
         int index = 0;
-        for (StudentCharacterization studentCharacterization : studentsCharacterizationRepository.findAllStudentsCharacterization()) {
+        for (StudentCharacterization studentCharacterization : studentCharacterizationList) {
             average = decimalFormat.format(studentGradeAverageCalculatorService.calculateAverage(studentCharacterization)).replace(',','.');
             averageNum = Double.valueOf(average);
             if(averageNum < 3.0) {
@@ -78,11 +87,13 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
 
     @Override
     public String findSubjectWithHighestGrade(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
+        List<StudentCharacterization> studentCharacterizationList = this.studentsCharacterizationRepository.findAllStudentsCharacterization();
+
         double highestGrade = 0.0;
         String subjectName = "";
         String studentName = "";
         int index = 0;
-        for (StudentCharacterization studentCharacterization : studentsCharacterizationRepository.findAllStudentsCharacterization()) {
+        for (StudentCharacterization studentCharacterization : studentCharacterizationList) {
             double[] studentsGrade = new double[8];
             studentsGrade[0] = studentCharacterization.calculusGrade();
             studentsGrade[1] = studentCharacterization.spanishGrade();
@@ -135,12 +146,14 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public String findStudentWithHighestAverage(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
+    public String findStudentWithHighestAverage() {
+        List<StudentCharacterization> studentCharacterizationList = this.studentsCharacterizationRepository.findAllStudentsCharacterization();
+
         double average;
         double highestAverage = 0.0;
         String studentWithHighestAverage = "";
 
-        for (StudentCharacterization studentCharacterization : studentsCharacterizationRepository.findAllStudentsCharacterization()) {
+        for (StudentCharacterization studentCharacterization : studentCharacterizationList) {
             average = studentGradeAverageCalculatorService.calculateAverage(studentCharacterization);
             if (highestAverage < average){
                 highestAverage = average;
@@ -152,12 +165,13 @@ public class CourseGradeAverageCalculatorServiceImpl implements CourseGradeAvera
     }
 
     @Override
-    public String findStudentWithLowestAverage(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
+    public String findStudentWithLowestAverage() {
+        List<StudentCharacterization> studentCharacterizationList = this.studentsCharacterizationRepository.findAllStudentsCharacterization();
         double average;
         double lowestAverage = 5.0;
         String studentWithLowestAverage = "";
 
-        for (StudentCharacterization studentCharacterization : studentsCharacterizationRepository.findAllStudentsCharacterization()) {
+        for (StudentCharacterization studentCharacterization : studentCharacterizationList) {
             average = studentGradeAverageCalculatorService.calculateAverage(studentCharacterization);
             if (lowestAverage > average){
                 lowestAverage = average;

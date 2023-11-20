@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <title>School Performance Evaluator</title>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>School Performance Evaluator</h1>
+    </div>
+
+    <div class="content">
+        <div class="buttons">
+            <button onclick="showResult('Listar estudiantes')">Listar estudiantes</button>
+            <button onclick="showResult('Nuevo estudiante')">Nuevo estudiante</button>
+            <button onclick="showResult('Promedio curso')">Promedio curso</button>
+            <button onclick="showResult('Estudiantes aprobados')">Estudiantes aprobados</button>
+            <button onclick="showResult('Estudiantes reprobados')">Estudiantes reprobados</button>
+            <button onclick="showResult('Mejor promedio')">Mejor promedio</button>
+            <button onclick="showResult('Peor promedio')">Peor promedio</button>
+            <button onclick="showResult('Mediana de los cursos')">Mediana de los cursos</button>
+            <button onclick="showResult('Mediana por curso')">Mediana por curso</button>
+        </div>
+
+        <div class="image-container" id="image-container">
+            <img src="images/school_students.jpg" alt="school-students">
+        </div>
+        <div id="resultOverlay" class="result-overlay">
+            <div id="result-container" class="result-box"></div>
+            <button class="backButton" id="backButton" onclick="goBack()">Volver</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

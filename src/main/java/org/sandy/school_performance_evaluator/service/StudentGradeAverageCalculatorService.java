@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface StudentGradeAverageCalculatorService {
     double calculateAverage(StudentCharacterization student);
+
+    List<StudentCharacterization> listStudentsCharacterization();
+
+    StudentCharacterization addStudentCharacterization(StudentCharacterization newStudentCharacterization);
 }

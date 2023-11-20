@@ -1,9 +1,10 @@
 package org.sandy.school_performance_evaluator.service;
 
-import org.sandy.school_performance_evaluator.repository.GradeBySubjectRepositoryImpl;
+import org.sandy.school_performance_evaluator.repository.GradeSubjectRepositoryImpl;
 
 import java.util.List;
 
 public interface StatisticsCalculatorService {
-    List<Double> calculateMedianGradeBySubject(GradeBySubjectRepositoryImpl gradeSubjectsRepository);
+    double calculateMedianGradeBySubject(String subjectName);
+    List<Double> calculateMedianGradesForAllSubjects();
 }

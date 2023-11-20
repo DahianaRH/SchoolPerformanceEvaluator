@@ -7,9 +7,9 @@ import java.util.List;
 public interface CourseGradeAverageCalculatorService {
 
     double calculateCourseAverage();
-    List<String> classifyStudentsWhoPassed(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository);
-    List<String> classifyStudentsWhoFailed(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository);
+    List<String> classifyStudentsWhoPassed();
+    List<String> classifyStudentsWhoFailed();
     String findSubjectWithHighestGrade(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository);
-    String findStudentWithHighestAverage(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository);
-    String findStudentWithLowestAverage(StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository);
+    String findStudentWithHighestAverage();
+    String findStudentWithLowestAverage();
 }
