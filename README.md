@@ -9,6 +9,3 @@ La School Performance Evaluator es una aplicación Java que permite evaluar el r
 - Identificación del estudiante con el promedio más alto.
 - Identificación del estudiante con el promedio más bajo.
 - Cálculo de la mediana de calificaciones por materia.
-
-## Uso
-La aplicación se ejecuta a través de la clase ApplicationRunner, que proporciona una interfaz de línea de comandos para realizar las evaluaciones y mostrar los resultados.
