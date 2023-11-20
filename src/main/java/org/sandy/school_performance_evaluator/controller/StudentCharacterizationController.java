@@ -1,7 +1,6 @@
 package org.sandy.school_performance_evaluator.controller;
 
 import org.sandy.school_performance_evaluator.model.StudentCharacterization;
-import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationUsingFileRepositoryImpl;
 import org.sandy.school_performance_evaluator.service.CourseGradeAverageCalculatorService;
 import org.sandy.school_performance_evaluator.service.StudentGradeAverageCalculatorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,6 @@ public class StudentCharacterizationController {
 
     @PostMapping("/createStudent")
     public ResponseEntity<StudentCharacterization> createStudent(@RequestBody StudentCharacterization newStudentCharacterization) {
-        System.out.println("Datos del estudiante recibidos: " + newStudentCharacterization);
         StudentCharacterization studentCharacterization = studentGradeAverageCalculatorService.addStudentCharacterization(newStudentCharacterization);
         return ResponseEntity.status(HttpStatus.OK).body(studentCharacterization);
     }
