@@ -1,7 +1,6 @@
 package org.sandy.school_performance_evaluator.controller;
 
 import org.sandy.school_performance_evaluator.model.StudentCharacterization;
-import org.sandy.school_performance_evaluator.repository.StudentsCharacterizationUsingFileRepositoryImpl;
 import org.sandy.school_performance_evaluator.service.CourseGradeAverageCalculatorService;
 import org.sandy.school_performance_evaluator.service.StudentGradeAverageCalculatorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class StudentCharacterizationController {
     @Autowired
     public StudentCharacterizationController(
             CourseGradeAverageCalculatorService courseGradeAverageCalculatorService,
-            StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService, StudentsCharacterizationUsingFileRepositoryImpl studentsCharacterizationRepository) {
+            StudentGradeAverageCalculatorServiceImpl studentGradeAverageCalculatorService) {
         this.courseGradeAverageCalculatorService = courseGradeAverageCalculatorService;
         this.studentGradeAverageCalculatorService = studentGradeAverageCalculatorService;
     }
